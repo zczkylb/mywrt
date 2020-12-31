@@ -14,10 +14,16 @@ DEVICE_TYPE?=router
 
 # Default packages - the really basic set
 DEFAULT_PACKAGES:=base-files libc libgcc busybox dropbear mtd uci opkg netifd fstools uclient-fetch logd urandom-seed urngd
+	default-settings luci-app-ramfree \
+	luci-app-ddns ddns-scripts_aliyun ddns-scripts_dnspod \
+	luci-ssl luci-compat luci-lib-ipkg iptables-mod-fullconenat \
+	luci-app-upnp luci-app-passwall luci-app-jd-dailybonus \
+	luci-app-nlbwmon luci-app-syncdial luci-app-wol luci-app-unblockmusic
+
 # For nas targets
 DEFAULT_PACKAGES.nas:=block-mount fdisk lsblk mdadm
 # For router targets
-DEFAULT_PACKAGES.router:=dnsmasq iptables ip6tables ppp ppp-mod-pppoe firewall odhcpd-ipv6only odhcp6c kmod-ipt-offload
+DEFAULT_PACKAGES.router:=dnsmasq-full iptables ip6tables ppp ppp-mod-pppoe firewall odhcpd-ipv6only odhcp6c kmod-ipt-offload
 DEFAULT_PACKAGES.bootloader:=
 
 ifneq ($(DUMP),)
